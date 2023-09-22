@@ -1,0 +1,16 @@
+.imgSize {
+    width: 10rem;
+    border-radius: 1rem;
+}
+
+.window {
+    background-image: linear-gradient(to right top, #000000, #181818, #282828, #3a3a3a, #4c4c4c);
+    color: white;
+    display: grid;
+    min-height: 75vh;
+    grid-template-rows: auto 1fr auto;
+}
+
+.liStyle{
+    list-style-type: none;
+}

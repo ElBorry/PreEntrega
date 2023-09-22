@@ -1,0 +1,8 @@
+.backgroundColor{
+    background-image: linear-gradient(to right top, #000000, #181818, #282828, #3a3a3a, #4c4c4c);
+    background-color: rgb(17, 0, 0);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}

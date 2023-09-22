@@ -1,0 +1,28 @@
+.titulo {
+    color: #FCEA10;
+    font-family: "RigorMortis", sans-serif;
+    text-align: center;
+  }
+
+.texto{
+    color: #2fac66;
+  text-align: center;
+}
+
+.alineacion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.imgStyle {
+    width: 80%;
+    border-radius: 1rem;
+}
+
+.backgroundDetail {
+    background-image: linear-gradient(to right top, #2FAC66, #000000, #181818, #282828, #3a3a3a, #4c4c4c, #2FAC66);
+
+}
+
