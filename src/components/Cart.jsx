@@ -33,7 +33,7 @@ const Cart = () => {
                         {cart.map((item) => (
                             <li key={item.id} className="mt-4">
                                 <div className="card" style={{width: "18rem"}}>    
-                                    <img src={`/${item.imageId}`} alt={item.title} />
+                                    <img src={`/img/${item.imageId}`} alt={item.title} />
                                 </div>
                                
                                 <div>

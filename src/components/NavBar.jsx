@@ -76,7 +76,7 @@ const NavBar = () => {
           </form>
           <div className="text-end">
             <NavLink to="/cart">
-            <CartWidget className="btn btn-outline-light me-2" />
+            <CartWidget className="btn btn-primary position-relative" />
             </NavLink>
           </div>
         </nav>

@@ -80,12 +80,12 @@ function Checkout() {
   }, [orderId]);
 
 
-  return (
-    <div>
+    return (
+      <div>
       <h2>Finalizar compra</h2>
       {isFormSubmitted ? (
         <div>
-          <p>¡Compra exitosa! Código de seguimiento: {orderId}</p>
+          <p>¡Compra exitosa! Código de compra: {orderId}</p>
           <p>Detalle de tu compra: </p>
           <ul>
             {cart.map((item) => (
@@ -173,9 +173,7 @@ function Checkout() {
   );
 }
 
-
 export default Checkout;
-
 
 
 
