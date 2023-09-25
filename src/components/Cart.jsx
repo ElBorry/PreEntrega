@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import CartContext from "../context/CartContext";
+import { Link, NavLink } from "react-router-dom";
+import { CartContext } from "../context/CartProvider";
 import { FaTrash } from 'react-icons/fa';
 import styles from "./Cart.module.css"
 
 
 const Cart = () => {
-    const { cart, removeItem, clearCart } = useContext(CartContext);
+    const { cart, removeItem, clear } = useContext(CartContext);
 
     const isEmpty = cart.length === 0;
 
@@ -25,7 +25,7 @@ const Cart = () => {
             {isEmpty ? (
                 <div>
                     <p>Tu carrito está vacio!</p>
-                    <Link to="/"><button> Ver productos  </button></Link>
+                    <NavLink to="/"><button> Ver productos  </button></NavLink>
                 </div>
             ) : (
                 <div>
@@ -33,7 +33,7 @@ const Cart = () => {
                         {cart.map((item) => (
                             <li key={item.id} className="mt-4">
                                 <div className="card" style={{width: "18rem"}}>    
-                                    <img src={`/img/${item.imageId}`} alt={item.title} />
+                                    <img src={`/${item.imageId}`} alt={item.title} />
                                 </div>
                                
                                 <div>
@@ -51,10 +51,10 @@ const Cart = () => {
                         <div>
                             <p>Total: ${calculateTotal()}</p>
                         </div>
-                        <button className="btn btn-danger ms-2" onClick={() => clearCart()}>Vaciar carrito</button>
-                        <Link to="/checkout">
+                        <button className="btn btn-danger ms-2" onClick={() => clear()}>Vaciar carrito</button>
+                        <NavLink to="/checkout">
                             <button  className="btn btn-primary ms-2">Realizar compra</button>
-                        </Link>
+                        </NavLink>
                         <Link to="/"><button className="btn btn-success ms-2" > Ver mas productos  </button></Link>
                     </div>
                 </div>

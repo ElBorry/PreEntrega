@@ -1,9 +1,11 @@
 import { useContext, useState, useEffect } from "react";
 import CartProvider from "../context/CartProvider";
+import { CartContext } from "../context/CartProvider";
 import { serverTimestamp, getFirestore, collection, addDoc } from "firebase/firestore";
 import { getCartTotal, mapCartToOrderItems } from "../utils";
 import { createOrder } from "../services";
 import { Link } from 'react-router-dom';
+import styles from "./Cart.module.css"
 
 function Checkout() {
   const [formData, setFormData] = useState({
@@ -17,7 +19,7 @@ function Checkout() {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [orderId, setOrderId] = useState(null);
 
-  const { clearCart, cart } = useContext(CartProvider);
+  const { clear, cart } = useContext(CartContext);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -74,31 +76,37 @@ function Checkout() {
   useEffect(() => {
     return () => {
       if (orderId) {
-        clearCart();
+        clear();
       }
     };
   }, [orderId]);
 
 
     return (
-      <div>
-      <h2>Finalizar compra</h2>
+      <div className={styles.window} >
+      <h2 className="text-center mb-4 mt-4">Finalizar compra</h2>
       {isFormSubmitted ? (
         <div>
           <p>¡Compra exitosa! Código de compra: {orderId}</p>
           <p>Detalle de tu compra: </p>
           <ul>
-            {cart.map((item) => (
-              <li key={item.id}>
-                <div>
-                  <img src={`/img/${item.imageId}`} alt={item.title} />
-                </div>
-                <p >{item.title}</p>
-                <p > - ${item.price} -</p>
-                <p >Cantidad: {item.quantity}</p>
-              </li>
-            ))}
-          </ul>
+                        {cart.map((item) => (
+                            <li key={item.id} className="mt-4">
+                                <div className="card" style={{width: "18rem"}}>    
+                                    <img src={`/${item.imageId}`} alt={item.title} />
+                                </div>
+                               
+                                <div>
+                                    <h3>{item.title}</h3>
+                                </div>
+                                <div >
+                                    <p>Precio: ${item.price}</p>
+                                    <p>Cantidad: {item.quantity}</p>
+
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
           <p>Total: ${calculateTotal()}</p>
           <Link to="/">
             <button>Volver</button>
